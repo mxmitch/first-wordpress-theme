@@ -8,11 +8,13 @@ body {
 }
 
 header {
-  display: flex;
-  align-items: center;
   background: #3f6d9b;
   height: 100px;
   text-align: right;
+}
+
+.logo {
+  height: 50px;
 }
 
 .navigation {
