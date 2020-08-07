@@ -1,0 +1,15 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "header";
+@import "colours";
+@import "woocommerce";
+@import "footer";
+
+#hero {
+  height: 400px;
+  width: 100%;
+  background: url("images/hero.jpg") #ccc;
+  background-size: cover;
+  h1 {
+    color: #fff;
+  }
+}

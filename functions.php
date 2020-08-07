@@ -11,13 +11,22 @@ function load_stylesheets()
   wp_enqueue_style('bootstrap');
 
   wp_register_style(
-    'style',
+    'stylesheet',
     get_template_directory_uri() . '/style.css',
     [],
     false,
     'all'
   );
-  wp_enqueue_style('style');
+  wp_enqueue_style('stylesheet');
+
+  wp_register_style(
+    'custom',
+    get_template_directory_uri() . '/app.css',
+    [],
+    false,
+    'all'
+  );
+  wp_enqueue_style('custom');
 }
 
 add_action('wp_enqueue_scripts', 'load_stylesheets');
@@ -41,7 +50,7 @@ function loadjs()
 {
   wp_register_script(
     'customjs',
-    get_template_directory_uri() . '/js/scripts.js',
+    get_template_directory_uri() . '/js/app.js',
     '',
     1,
     true
@@ -58,15 +67,15 @@ function customtheme_add_woocommerce_support()
 
 add_action('after_setup_theme', 'customtheme_add_woocommerce_support');
 
+// Add menus
 add_theme_support('menus');
-
-add_theme_support('post-thumbnails');
 
 register_nav_menus([
   'top-menu' => __('Top Menu', 'theme'),
   'footer-menu' => __('Footer Menu', 'theme'),
 ]);
 
+add_theme_support('post-thumbnails');
 add_image_size('smallest', 300, 300, true);
 add_image_size('largest', 800, 800, true);
 
