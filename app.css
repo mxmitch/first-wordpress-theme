@@ -9993,10 +9993,39 @@ header {
   color: #fff;
 }
 
-footer {
+.woocommerce .woocommerce-Address-title title {
+  background: none;
+  box-shadow: none;
+}
+.woocommerce .woocommerce-input-wrapper {
+  width: 100%;
+  display: block;
+}
+.woocommerce ul li {
+  list-style-type: none;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 60px;
   background: #a2a2a2;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
 }
 
 #hero {
@@ -10007,4 +10036,15 @@ footer {
 }
 #hero h1 {
   color: #fff;
+}
+
+.widget {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.widget ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

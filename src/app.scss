@@ -4,12 +4,39 @@
 @import "woocommerce";
 @import "footer";
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
 #hero {
   height: 400px;
   width: 100%;
   background: url("images/hero.jpg") #ccc;
   background-size: cover;
   h1 {
-    color: #fff;
+    color: $light;
+  }
+}
+
+.widget {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
   }
 }

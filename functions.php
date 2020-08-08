@@ -1,15 +1,7 @@
 <?php
+
 function load_stylesheets()
 {
-  wp_register_style(
-    'bootstrap',
-    get_template_directory_uri() . '/css/bootstrap.min.css',
-    [],
-    false,
-    'all'
-  );
-  wp_enqueue_style('bootstrap');
-
   wp_register_style(
     'stylesheet',
     get_template_directory_uri() . '/style.css',
@@ -31,41 +23,19 @@ function load_stylesheets()
 
 add_action('wp_enqueue_scripts', 'load_stylesheets');
 
-function include_jquery()
-{
-  wp_deregister_script('jquery');
-  wp_enqueue_script(
-    'jquery',
-    get_template_directory_uri() . '/js/jquery.min.js',
-    '',
-    1,
-    true
-  );
-  add_action('wp_enqueue_scripts', 'jquery');
-}
-
-add_action('wp_enqueue_scripts', 'include_jquery');
-
-function loadjs()
+function load_javascript()
 {
   wp_register_script(
-    'customjs',
-    get_template_directory_uri() . '/js/app.js',
-    '',
+    'custom',
+    get_template_directory_uri() . '/app.js',
+    'jquery',
     1,
     true
   );
-  wp_enqueue_script('customjs');
+  wp_enqueue_script('custom');
 }
 
-add_action('wp_enqueue_scripts', 'loadjs');
-
-function customtheme_add_woocommerce_support()
-{
-  add_theme_support('woocommerce');
-}
-
-add_action('after_setup_theme', 'customtheme_add_woocommerce_support');
+add_action('wp_enqueue_scripts', 'load_javascript');
 
 // Add menus
 add_theme_support('menus');
@@ -75,9 +45,21 @@ register_nav_menus([
   'footer-menu' => __('Footer Menu', 'theme'),
 ]);
 
-add_theme_support('post-thumbnails');
+// Add image sizes
+add_image_size('post_image', 1100, 750, true);
 add_image_size('smallest', 300, 300, true);
 add_image_size('largest', 800, 800, true);
+
+function customtheme_add_woocommerce_support()
+{
+  add_theme_support('woocommerce');
+}
+
+add_action('after_setup_theme', 'customtheme_add_woocommerce_support');
+
+add_theme_support('post-thumbnails');
+
+// Woocommerce
 
 remove_action(
   'woocommerce_before_main_content',
@@ -95,10 +77,30 @@ add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
 
 function my_theme_wrapper_start()
 {
-  echo '<section id="main">';
+  echo '<main>';
 }
 
 function my_theme_wrapper_end()
 {
-  echo '</section>';
+  echo '</main>';
 }
+
+require_once 'wp_bootstrap_navwalker.php';
+
+// Add a widget
+
+register_sidebar([
+  'name' => 'Page Sidebar',
+  'id' => 'page-sidebar',
+  'class' => 'widget',
+  'before_title' => '<h4>',
+  'after_title' => '</h4>',
+]);
+
+register_sidebar([
+  'name' => 'Blog Sidebar',
+  'id' => 'blog-sidebar',
+  'class' => '',
+  'before_title' => '<h4>',
+  'after_title' => '</h4>',
+]);
