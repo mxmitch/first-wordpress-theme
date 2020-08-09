@@ -1,3 +1,7 @@
+<?php
+/* Template Name: Shop Page */
+?>
+
 <?php get_header(); ?>
 
 <main>
