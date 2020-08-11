@@ -3,6 +3,7 @@
 @import "colours";
 @import "woocommerce";
 @import "footer";
+@import "comments";
 
 * {
   padding: 0;
@@ -81,5 +82,25 @@ main {
     margin: auto;
     display: block;
     width: 100%;
+  }
+}
+
+#single-template {
+  .post-content {
+    img {
+      width: 100%;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    ol {
+      padding-left: 1.5em;
+    }
+    h2 {
+      margin-bottom: 1em;
+    }
+  }
+  .categories ul {
+    list-style-type: none;
   }
 }

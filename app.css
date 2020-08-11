@@ -10094,3 +10094,19 @@ main {
   display: block;
   width: 100%;
 }
+
+#single-template .post-content img {
+  width: 100%;
+}
+#single-template .post-content ul {
+  padding-left: 1.5em;
+}
+#single-template .post-content ol {
+  padding-left: 1.5em;
+}
+#single-template .post-content h2 {
+  margin-bottom: 1em;
+}
+#single-template .categories ul {
+  list-style-type: none;
+}
